@@ -9,7 +9,8 @@
     "phone" : "901-555-1212",
     "address" : "1 Infinite Loop, Cupertino, CA",
     "favorite_movies" : ["Holiday Inn", "Fan Boys", "Star Wars Trilogy", "Indiana Jones", "National Lampoon's Christmas Vacation", "Brick"],
-    "favorite_tv_shows" : ["The Walking Dead", "Mad Men", "The Shield", "The Sopranos"]
+    "favorite_tv_shows" : ["The Walking Dead", "Mad Men", "The Shield", "The Sopranos"],
+    "grabbag" : {"items" : ["ededasfeg", "MMn45kdhybtUi"], "collection" : "/Products", "propertyName" : "products"}
   },
   {
     "guid" : "andk65J1kdj6ybdj",
