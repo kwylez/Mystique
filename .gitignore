@@ -1,3 +1,5 @@
-FatFractal/ff-generated/**
+
 .DS_Store
 *.txt
+
+/FatFractal/ff-generated/**
