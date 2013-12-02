@@ -3,3 +3,5 @@
 *.txt
 
 /FatFractal/ff-generated/**
+
+/ff-generated/
