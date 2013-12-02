@@ -15,6 +15,8 @@ SET ETaggingEnabled             true
 # Remove the following CORS setting if you don't wish to be able to use the data browser from the FatFractal Console
 SET CORS https://system.fatfractal.com
 
+SET AllowSystemUserToLogin      true
+
 #
 # Object Types
 #
