@@ -1,0 +1,21 @@
+
+{ 
+  "clazz" : "Product",
+  "collection" : "Products",
+  "results": [
+  {
+    "guid" : "andk65J1kdj6ybdj",
+    "name" : "iPhone 5s",
+    "color" : "Kayne West Gold",
+    "capacity" : "Infinite Genius",
+    "quanity" : 2
+  },
+  {
+    "guid" : "MMn45kdhybtUi",
+    "name" : "Nest Theromstat",
+    "generation" : "2",
+    "status" : "New",
+    "quanity" : 500
+  }
+  ]
+}
