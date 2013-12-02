@@ -24,7 +24,7 @@ FatFractal.prototype.initConfig = function(){
   this.setAutoLoadRefs(false);
 }
 
-FatFractal.prototype.processObject = function(modelObject, collectionName, callback) {
+FatFractal.prototype.processObject = function(modelObject, collectionName, grabBagObjects, callback) {
   
   ff.initConfig();
   ff.login(FatFractal.prototype.SYSTEM_USER, FatFractal.prototype.SYSTEM_PASS, 
@@ -32,13 +32,54 @@ FatFractal.prototype.processObject = function(modelObject, collectionName, callb
             function(user){
               
               ff.createObjAtUri(modelObject, 
-                                  collectionName,
-                                  function(data, statusMessage){
+                                collectionName,
+                                function(createdObj, statusMessage){
+
+                                  if (grabBagObjects !== null) {
+
+                                    console.log("will be adding grabbag objects");
+                                    
+                                    /**
+                                     * Begin processing all of the grabbag items
+                                     */
+
+                                    for (var i = 0; i <= grabBagObjects.items.length; i++) {
+
+                                      var grabBagObjectFFUri  = grabBagObjects.collection + "/" + grabBagObjects.items[i];
+                                      var grabBagPropertyName = grabBagObjects.propertyName;
+
+                                      console.log("grabBagObjectFFUri " + grabBagObjectFFUri + " property name" + grabBagPropertyName);
+
+                                      ff.getObjFromUri(grabBagObjectFFUri, 
+                                                       
+                                                       function(grabBagObject){
+                                                         
+                                                         ff.grabBagAdd(grabBagObject, createdObj, grabBagPropertyName, 
+                                                                       function(statusMessage){
+                                                                         console.log("response: " + statusMessage);
+                                                                       },
+                                                                       function(statusCode, statusMessage){
+                                                                          console.log("failed to add to grabbag " + statusMessage);
+                                                                       });
+                                                       }, 
+                                                       function(statusCode, statusMessage){
+                                                          console.log("failed to get to grabbag object " + statusMessage);
+                                                       }
+                                      );// end get object from uri
+                                    }
+
+                                    /**
+                                     * End processing all of the grabbag items
+                                     */
+
+                                  } else {
+                                    
                                     callback(statusMessage, null);
-                                  }, 
-                                  function(statusCode, statusMessage){
-                                    callback(null, statusMessage);
-                                  });
+                                  }
+                                }, 
+                                function(statusCode, statusMessage){
+                                  callback(null, statusMessage);
+                                });
             }, 
             function(statusCode, statusMessage){
               callback(null, "Login failed " + statusMessage);
