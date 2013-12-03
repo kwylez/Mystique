@@ -19,7 +19,7 @@ FatFractal.prototype.SYSTEM_PASS = SYSTEM_PASS;
 FatFractal.prototype.initConfig = function(){
   
   this.setSimulateCookies(true);
-  this.setDebug(true);
+  this.setDebug(false);
   this.setBaseUrl(FatFractal.prototype.FF_BASE_URL);
   this.setAutoLoadRefs(false);
 }
@@ -34,7 +34,9 @@ FatFractal.prototype.processObject = function(modelObject, collectionName, grabB
               ff.createObjAtUri(modelObject, 
                                 collectionName,
                                 function(createdObj, statusMessage){
-
+                                  
+                                  console.log("grabBagObjects passed into the callback !!!!!!!!!!!!!!!! " + JSON.stringify(grabBagObjects));
+                                  
                                   if (grabBagObjects !== null) {
 
                                     console.log("will be adding grabbag objects");
@@ -45,27 +47,31 @@ FatFractal.prototype.processObject = function(modelObject, collectionName, grabB
 
                                     for (var i = 0; i <= grabBagObjects.items.length; i++) {
 
-                                      var grabBagObjectFFUri  = grabBagObjects.collection + "/" + grabBagObjects.items[i];
+                                      var grabBagObjectGUID   = grabBagObjects.items[i];
+                                      var grabBagObjectFFUri  = grabBagObjects.collection + "/" + grabBagObjectGUID;
                                       var grabBagPropertyName = grabBagObjects.propertyName;
+  
+                                      if (typeof(grabBagObjectGUID) !== 'undefined') {
 
-                                      console.log("grabBagObjectFFUri " + grabBagObjectFFUri + " property name" + grabBagPropertyName);
-
-                                      ff.getObjFromUri(grabBagObjectFFUri, 
-                                                       
-                                                       function(grabBagObject){
+                                        console.log("grabBagObjectFFUri " + grabBagObjectFFUri + " property name " + grabBagPropertyName);
+  
+                                        ff.getObjFromUri(grabBagObjectFFUri, 
                                                          
-                                                         ff.grabBagAdd(grabBagObject, createdObj, grabBagPropertyName, 
-                                                                       function(statusMessage){
-                                                                         console.log("response: " + statusMessage);
-                                                                       },
-                                                                       function(statusCode, statusMessage){
-                                                                          console.log("failed to add to grabbag " + statusMessage);
-                                                                       });
-                                                       }, 
-                                                       function(statusCode, statusMessage){
-                                                          console.log("failed to get to grabbag object " + statusMessage);
-                                                       }
-                                      );// end get object from uri
+                                                         function(grabBagObject){
+                                                           
+                                                           ff.grabBagAdd(grabBagObject, createdObj, grabBagPropertyName, 
+                                                                         function(statusMessage){
+                                                                           console.log("response: " + statusMessage);
+                                                                         },
+                                                                         function(statusCode, statusMessage){
+                                                                            console.log("failed to add to grabbag " + statusMessage);
+                                                                         });
+                                                         }, 
+                                                         function(statusCode, statusMessage){
+                                                            console.log("failed to get to grabbag object " + statusMessage);
+                                                         }
+                                        );// end get object from uri
+                                      }
                                     }
 
                                     /**
