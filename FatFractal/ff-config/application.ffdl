@@ -9,7 +9,7 @@ SET AllowNewMembers             true
 SET AndroidPushAuthToken        YOUR_ANDROID_AUTH_TOKEN_GOES_HERE
 SET ApplePushKeystorePassword   YOUR_KEYSTORE_PASSWORD_GOES_HERE
 SET ApplePushUsingProduction    false
-SET LogLevel                    INFO
+SET LogLevel                    TRACE
 SET PushIsInactive              true
 SET ETaggingEnabled             true
 # Remove the following CORS setting if you don't wish to be able to use the data browser from the FatFractal Console
@@ -39,3 +39,5 @@ CREATE COLLECTION /FFNotificationID OBJECTTYPE FFNotificationID
 #
 # Extension Resources
 #
+
+CREATE EXTENSION /deleteResource UNSECURED AS javascript:var f = require ('scripts/Extensions'); f.deleteAllForResource();
