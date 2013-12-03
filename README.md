@@ -1,7 +1,23 @@
 ## Mystique
 
 
-Due to the dyanmic, almost shape-shifting, nature of [FatFractal's](http://www.fatfractal.com/) NoServer module and FFDL configuraiton importing existing data structures becomes *almost* a no brainer. There is no need to pre-define your schemea if you don't want, just set the [FFDL](http://fatfractal.com/prod/docs/reference/#ffdl) to **learn mode** and off you go.
+Due to the dyanmic, almost shape-shifting, nature of [FatFractal's](http://www.fatfractal.com/) NoServer module and FFDL configuraiton importing existing data structures becomes *almost* a no brainer. There is no need to pre-define your schemea if you don't want, just set the [FFDL](http://fatfractal.com/prod/docs/reference/#ffdl) to **learn mode** and off you go. The project includes two sample files `products.json` and `customers.json`. This exercise demostrates that by leveraging the flexibility of the FatFractal's NoServer migrating existing data, while never trivial, is made a lot easier with FatFractal.
+
+If you aren't familiar with the FatFractal platform then visit their [getting started page](http://fatfractal.com/prod/docs/getting-started/). Please **note**...this project doesn't require an account with FatFractal. You can run it locally.
+
+### Usage
+
+*Scripts found in the Importer directory*
+
+`node import.js products.json`
+
+`node import.js customers.json`
+
+### Verifying Data
+
+You can verify your data by browsing to [http://localhost:8080/mystique/databrowser/databrowser.html](http://localhost:8080/mystique/databrowser/databrowser.html)
+
+[http://localhost:8080/mystique/ff/resources/Products](http://localhost:8080/mystique/ff/resources/Products) and [http://localhost:8080/mystique/ff/resources/Customers](http://localhost:8080/mystique/ff/resources/Customers)
 
 ### Name Genesis
 
