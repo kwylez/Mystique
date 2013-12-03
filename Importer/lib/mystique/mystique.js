@@ -8,9 +8,8 @@ var Mystique = function() {
   return {
         addObject: function(importJSONFile, finalCallback){
           
-          var data             = fs.readFileSync(importJSONFile, 'utf8');
-          var modelObject      = {};
-          var grabBagCollecton = null;
+          var data        = fs.readFileSync(importJSONFile, 'utf8');
+          var modelObject = {};
 
           if (data) {
             
@@ -20,7 +19,9 @@ var Mystique = function() {
             var objectCollection = parsedJSON['collection'];
 
             records.forEach(function(record, i){
-
+                
+                var importGrabBagCollection = null;
+                
                 if (record) {
 
                   modelObject = {'clazz' : objectName};
@@ -33,17 +34,17 @@ var Mystique = function() {
                    for (key in record) {
                      
                      if (key === 'grabbag') {
-
-                       grabBagCollecton = record[key];
+                       console.log("xxxxxxxx importGrabBagCollection " + record[key] + " for key " + key + " on object " + record['guid']);
+                       importGrabBagCollection = record[key];
 
                      } else {
-
+                       console.log("yyyyyyyyyyyy record " + record[key] + " for key " + key);
                        modelObject[key] = record[key]; 
                      }
                    }
 
-                  ff.processObject(modelObject, objectCollection, grabBagCollecton, function(successMessage, errorMessage){
-
+                  ff.processObject(modelObject, objectCollection, importGrabBagCollection, function(successMessage, errorMessage){
+                    
                     finalCallback(successMessage, errorMessage);
                   });
                 }
