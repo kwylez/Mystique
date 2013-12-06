@@ -34,12 +34,8 @@ FatFractal.prototype.processObject = function(modelObject, collectionName, grabB
               ff.createObjAtUri(modelObject, 
                                 collectionName,
                                 function(createdObj, statusMessage){
-                                  
-                                  console.log("grabBagObjects passed into the callback !!!!!!!!!!!!!!!! " + JSON.stringify(grabBagObjects));
-                                  
-                                  if (grabBagObjects !== null) {
 
-                                    console.log("will be adding grabbag objects");
+                                  if (grabBagObjects !== null) {
                                     
                                     /**
                                      * Begin processing all of the grabbag items
@@ -52,8 +48,6 @@ FatFractal.prototype.processObject = function(modelObject, collectionName, grabB
                                       var grabBagPropertyName = grabBagObjects.propertyName;
   
                                       if (typeof(grabBagObjectGUID) !== 'undefined') {
-
-                                        console.log("grabBagObjectFFUri " + grabBagObjectFFUri + " property name " + grabBagPropertyName);
   
                                         ff.getObjFromUri(grabBagObjectFFUri, 
                                                          

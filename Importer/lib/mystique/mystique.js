@@ -34,11 +34,11 @@ var Mystique = function() {
                    for (key in record) {
                      
                      if (key === 'grabbag') {
-                       console.log("xxxxxxxx importGrabBagCollection " + record[key] + " for key " + key + " on object " + record['guid']);
+
                        importGrabBagCollection = record[key];
 
                      } else {
-                       console.log("yyyyyyyyyyyy record " + record[key] + " for key " + key);
+
                        modelObject[key] = record[key]; 
                      }
                    }
